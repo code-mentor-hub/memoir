@@ -31,3 +31,9 @@ build
 
 # Ignore Kotlin plugin data
 .kotlin
+
+# Ignore database file
+*.db
+
+# Ignore IntelliJ IDEA configuration
+.idea/
