@@ -19,9 +19,6 @@ public class App {
                 System.out.println(e.getMessage());
             }
       }
-    public String getGreeting(){
-        return "Hello";
-    }
 
 
   
