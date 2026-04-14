@@ -25,14 +25,18 @@ public class App {
 
         LocalDateTime now = LocalDateTime.now();
 
-        DatabaseManager.insertNote(title, content, now, creator);
+        Note newNote = new Note(title, content, now, creator);
+        DatabaseManager.insertNote(newNote);
 
         List<Note> allNotes = DatabaseManager.getAllNotes();
-        Note note = allNotes.get(allNotes.size() - 1);
+        Note lastNnote = allNotes.getLast();
 
         System.out.println("\nCreated note:");
-        System.out.println(note);
+        System.out.println(lastNnote);
 
         scanner.close();
+
+
+
     }
 }

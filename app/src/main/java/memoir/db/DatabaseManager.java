@@ -41,15 +41,15 @@ public class DatabaseManager {
         }
     }
 
-    public static void insertNote(String title, String content, LocalDateTime createdAt, String createdBy) {
+    public static void insertNote(Note note) {
         String sql = "INSERT INTO notes (title, content, created_at, created_by) VALUES (?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, title);
-            stmt.setString(2, content);
-            stmt.setString(3, createdAt.toString());
-            stmt.setString(4, createdBy);
+            stmt.setString(1, note.getTitle());
+            stmt.setString(2, note.getContent());
+            stmt.setString(3, note.getCreatedAt().toString());
+            stmt.setString(4, note.getCreatedBy());
             stmt.executeUpdate();
 
         } catch (Exception e) {
