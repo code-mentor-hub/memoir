@@ -37,3 +37,5 @@ build
 
 # Ignore IntelliJ IDEA configuration
 .idea/
+
+*.sqlite
