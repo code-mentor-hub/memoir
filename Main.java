@@ -63,7 +63,7 @@ public class Main {
     }
 
     static void searchNote() {
-        System.out.print("Enter note name: ");
+        System.out.print("Enter note id: ");
         String name = scanner.nextLine();
 
         if (notes.containsKey(name)) {
@@ -74,7 +74,7 @@ public class Main {
     }
 
     static void addNote() {
-        System.out.print("Enter note name: ");
+        System.out.print("Enter note id: ");
         String name = scanner.nextLine();
 
         System.out.print("Enter note content: ");
@@ -97,7 +97,7 @@ public class Main {
     }
 
     static void modifyNote() {
-        System.out.print("Enter note name to modify: ");
+        System.out.print("Enter note id to modify: ");
         String name = scanner.nextLine();
 
         if (notes.containsKey(name)) {
