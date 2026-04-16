@@ -85,7 +85,7 @@ public class Main {
     }
 
     static void deleteNote() {
-        System.out.print("Enter note name to delete: ");
+        System.out.print("Enter note id to delete: ");
         String name = scanner.nextLine();
 
         if (notes.containsKey(name)) {
