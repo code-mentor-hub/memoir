@@ -64,7 +64,7 @@ public class Main {
 
     static void searchNote() {
         System.out.print("Enter note id: ");
-        String name = scanner.nextLine();
+        int id = scanner.nextInt();
 
         if (notes.containsKey(name)) {
             System.out.println("Content: " + notes.get(name));
@@ -75,7 +75,7 @@ public class Main {
 
     static void addNote() {
         System.out.print("Enter note id: ");
-        String name = scanner.nextLine();
+        int id = scanner.nextInt();
 
         System.out.print("Enter note content: ");
         String content = scanner.nextLine();
@@ -86,7 +86,7 @@ public class Main {
 
     static void deleteNote() {
         System.out.print("Enter note id to delete: ");
-        String name = scanner.nextLine();
+         int id = scanner.nextInt();
 
         if (notes.containsKey(name)) {
             notes.remove(name);
@@ -98,7 +98,7 @@ public class Main {
 
     static void modifyNote() {
         System.out.print("Enter note id to modify: ");
-        String name = scanner.nextLine();
+         int id = scanner.nextInt();
 
         if (notes.containsKey(name)) {
             System.out.print("Enter new content: ");
