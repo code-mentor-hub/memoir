@@ -3,6 +3,8 @@ package memoir;
 import memoir.db.DatabaseManager;
 import memoir.model.Note;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Scanner;
 import java.time.LocalDateTime;
