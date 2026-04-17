@@ -1,31 +1,20 @@
 package memoir;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import memoir.db.DatabaseManager;
+import memoir.model.Note;
+
+import java.util.List;
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class App {
-  public static void connectDB() {
-
-        String url = "jdbc:sqlite:./memoir.db";
-
-        try (var conn = DriverManager.getConnection(url)) {
-            if (conn != null) {
-                System.out.println("Connection to SQLite has been established.");
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
   
     static Scanner scanner = new Scanner(System.in);
     static Map<String, String> notes = new HashMap<>();
 
     public static void main(String[] args) {
-      connectDB();
-
+      
+        DatabaseManager.initializeDatabase();
         boolean running = true;
         while (running) {
             showMenu();

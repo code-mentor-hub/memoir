@@ -1,5 +1,7 @@
+package memoir.model;
 
 import java.time.LocalDateTime;
+
 public class Note {
 
     private int id;
@@ -8,7 +10,14 @@ public class Note {
     private LocalDateTime createdAt;
     private String createdBy;
 
-    public Note(int id, String title, String content, LocalDateTime createdAt, LocalDateTime createdBy) {
+    public Note(String title, String content, LocalDateTime createdAt, String createdBy) {
+        this.title = title;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+    }
+
+    public Note(int id, String title, String content, LocalDateTime createdAt, String createdBy) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -32,27 +41,23 @@ public class Note {
         return createdAt;
     }
 
-    public LocalDateTime getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
     public void setId(int id) {
         this.id = id;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
     public void setContent(String content) {
         this.content = content;
     }
-
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-
-    public void setCreatedBy(LocalDateTime createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
