@@ -64,14 +64,17 @@ public class DatabaseManager {
 
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-
             if (rs.next()) {
-                return mapRow(rs);
+                Note note = mapRow(rs);
+                System.out.println(note);
+                return note;
+            } else {
+                System.out.println("Note not found.");
             }
-
         } catch (Exception e) {
             System.err.println("Find failed: " + e.getMessage());
         }
+
         return null;
     }
 
@@ -129,9 +132,17 @@ public class DatabaseManager {
         } catch (Exception e) {
             System.err.println("Get all failed: " + e.getMessage());
         }
+
+        if (notes.isEmpty()) {
+            System.out.println("No notes found.");
+        } else {
+            for (Note n : notes) {
+                System.out.println(n);
+            }
+        }
+
         return notes;
     }
-
     private static Note mapRow(ResultSet rs) throws SQLException {
         return new Note(
                 rs.getInt("id"),
@@ -142,3 +153,5 @@ public class DatabaseManager {
         );
     }
 }
+
+

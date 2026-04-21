@@ -3,14 +3,12 @@ package memoir;
 import memoir.db.DatabaseManager;
 import memoir.model.Note;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 import java.util.Scanner;
-import java.time.LocalDateTime;
 
 public class App {
-  
     static Scanner scanner = new Scanner(System.in);
     static Map<String, String> notes = new HashMap<>();
 
@@ -24,13 +22,15 @@ public class App {
 
             switch (choice) {
                 case "1":
-                    printNotes();
+                    DatabaseManager.getAllNotes();
                     break;
                 case "2":
-                    searchNote();
+                    System.out.println("Please enter the note id to search: ");
+                    int id = Integer.parseInt(scanner.nextLine().trim());
+                    DatabaseManager.findNoteById(id);
                     break;
                 case "3":
-                    addNote();
+                    DatabaseManager.insertNote(insertingNote());
                     break;
                 case "4":
                     deleteNote();
@@ -58,6 +58,17 @@ public class App {
         System.out.println("6. Exit");
         System.out.print("Choose option: ");
     }
+
+     static Note insertingNote(){
+        System.out.println("Please enter the note title: ");
+        String title = scanner.nextLine();
+        System.out.println("Please enter the note content: ");
+        String content = scanner.nextLine();
+        System.out.println("Please enter the name of author: ");
+        String author = scanner.nextLine();
+
+        return new Note(title, content, LocalDateTime.now(), author);
+    }}
 
     static void printNotes() {
         if (notes.isEmpty()) {
@@ -118,6 +129,6 @@ public class App {
         } else {
             System.out.println("Error: Note not found");
         }
-      
+
     }
 }
