@@ -30,7 +30,15 @@ public class App {
                     DatabaseManager.findNoteById(id);
                     break;
                 case "3":
-                    DatabaseManager.insertNote(insertingNote());
+                    System.out.println("Please enter the note title: ");
+                    String title = scanner.nextLine();
+                    System.out.println("Please enter the note content: ");
+                    String content = scanner.nextLine();
+                    System.out.println("Please enter the name of author: ");
+                    String author = scanner.nextLine();
+
+                    Note note = new Note(title, content, LocalDateTime.now(), author);
+                    DatabaseManager.insertNote(note);
                     break;
                 case "4":
                     deleteNote();
@@ -58,17 +66,6 @@ public class App {
         System.out.println("6. Exit");
         System.out.print("Choose option: ");
     }
-
-     static Note insertingNote(){
-        System.out.println("Please enter the note title: ");
-        String title = scanner.nextLine();
-        System.out.println("Please enter the note content: ");
-        String content = scanner.nextLine();
-        System.out.println("Please enter the name of author: ");
-        String author = scanner.nextLine();
-
-        return new Note(title, content, LocalDateTime.now(), author);
-    }}
 
     static void printNotes() {
         if (notes.isEmpty()) {
