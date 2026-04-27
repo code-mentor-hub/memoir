@@ -41,10 +41,10 @@ public class App {
                     DatabaseManager.insertNote(note);
                     break;
                 case "4":
-                    deleteNote();
+//                    deleteNote();
                     break;
                 case "5":
-                    modifyNote();
+//                    modifyNote();
                     break;
                 case "6":
                     System.out.println("Exiting...");
@@ -79,53 +79,53 @@ public class App {
         }
     }
 
-    static void searchNote() {
-        System.out.print("Enter note id: ");
-        int id = scanner.nextInt();
-
-        if (notes.containsKey(name)) {
-            System.out.println("Content: " + notes.get(name));
-        } else {
-            System.out.println("Error: No results found");
-        }
-    }
-
-    static void addNote() {
-        System.out.print("Enter note id: ");
-        int id = scanner.nextInt();
-
-        System.out.print("Enter note content: ");
-        String content = scanner.nextLine();
-
-        notes.put(name, content);
-        System.out.println("Note saved.");
-    }
-
-    static void deleteNote() {
-        System.out.print("Enter note id to delete: ");
-         int id = scanner.nextInt();
-
-        if (notes.containsKey(name)) {
-            notes.remove(name);
-            System.out.println("Note deleted.");
-        } else {
-            System.out.println("Error: Note not found");
-        }
-    }
-
-    static void modifyNote() {
-        System.out.print("Enter note id to modify: ");
-         int id = scanner.nextInt();
-
-        if (notes.containsKey(name)) {
-            System.out.print("Enter new content: ");
-            String newContent = scanner.nextLine();
-
-            notes.put(name, newContent);
-            System.out.println("Note updated.");
-        } else {
-            System.out.println("Error: Note not found");
-        }
-
-    }
+//    static void searchNote() {
+//        System.out.print("Enter note id: ");
+//        int id = scanner.nextInt();
+//
+//        if (notes.containsKey(name)) {
+//            System.out.println("Content: " + notes.get(name));
+//        } else {
+//            System.out.println("Error: No results found");
+//        }
+//    }
+//
+//    static void addNote() {
+//        System.out.print("Enter note id: ");
+//        int id = scanner.nextInt();
+//
+//        System.out.print("Enter note content: ");
+//        String content = scanner.nextLine();
+//
+//        notes.put(name, content);
+//        System.out.println("Note saved.");
+//    }
+//
+//    static void deleteNote() {
+//        System.out.print("Enter note id to delete: ");
+//         int id = scanner.nextInt();
+//
+//        if (notes.containsKey(name)) {
+//            notes.remove(name);
+//            System.out.println("Note deleted.");
+//        } else {
+//            System.out.println("Error: Note not found");
+//        }
+//    }
+//
+//    static void modifyNote() {
+//        System.out.print("Enter note id to modify: ");
+//         int id = scanner.nextInt();
+//
+//        if (notes.containsKey(name)) {
+//            System.out.print("Enter new content: ");
+//            String newContent = scanner.nextLine();
+//
+//            notes.put(name, newContent);
+//            System.out.println("Note updated.");
+//        } else {
+//            System.out.println("Error: Note not found");
+//        }
+//
+//    }
 }
