@@ -1,0 +1,23 @@
+# Stage 1: Creating .jar
+FROM eclipse-temurin:21-jdk-jammy AS build
+WORKDIR /app
+
+COPY gradlew .
+COPY gradle/ gradle/
+COPY app/build.gradle app/
+COPY settings.gradle .
+
+RUN ./gradlew :app:dependencies --no-daemon
+
+COPY app/src app/src
+
+RUN ./gradlew build --no-daemon
+
+# Stage 2: Run
+FROM eclipse-temurin:21-jre-jammy
+
+WORKDIR /app
+
+COPY --from=build /app/app/build/libs/app.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
