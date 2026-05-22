@@ -48,27 +48,31 @@ public class Note {
     public void setId(int id) {
         this.id = id;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
     @Override
     public String toString() {
-        return "Note{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", createdAt=" + createdAt +
-                ", createdBy=" + createdBy +
-                '}';
+        return "Note{"
+                + "id=" + id
+                + ", title='" + title + '\''
+                + ", content='" + content + '\''
+                + ", createdAt=" + createdAt
+                + ", createdBy=" + createdBy
+                + '}';
     }
 }

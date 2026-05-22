@@ -43,11 +43,12 @@ public class App {
                 case "4":
                     System.out.println("Please enter the note id to delete: ");
                     int deleteId = Integer.parseInt(scanner.nextLine().trim());
-                    DatabaseManager.deleteNote(deleteId);
+                    DatabaseManager.deleteNoteById(deleteId);
                     break;
                 case "5":
+                    int modifyId;
                     System.out.println("Please enter the note id to modify: ");
-                    int modifyId = Integer.parseInt(scanner.nextLine().trim());
+                    modifyId = Integer.parseInt(scanner.nextLine().trim());
                     System.out.println("Please enter new title: ");
                     String newTitle = scanner.nextLine();
                     System.out.println("Please enter new content: ");
@@ -55,7 +56,7 @@ public class App {
                     System.out.println("Please enter new author: ");
                     String newAuthor = scanner.nextLine();
                     Note updatedNote = new Note(newTitle, newContent, LocalDateTime.now(), newAuthor);
-                    DatabaseManager.modifyNote(modifyId, updatedNote);
+                    DatabaseManager.modifyNoteById(modifyId, updatedNote);
                     break;
                 case "6":
                     System.out.println("Exiting...");

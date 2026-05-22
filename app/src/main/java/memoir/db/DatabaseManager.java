@@ -4,7 +4,12 @@ import memoir.model.Note;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,12 +96,12 @@ public class DatabaseManager {
         }
     }
 
-    public static void modifyNoteById(int id, String newContent) {
+    public static void modifyNoteById(int id, Note newContent) {
         String sql = "UPDATE notes SET content = ? WHERE id = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, newContent);
+            stmt.setString(1, newContent.getContent());
             stmt.setInt(2, id);
             stmt.executeUpdate();
 
@@ -143,6 +148,7 @@ public class DatabaseManager {
 
         return notes;
     }
+
     private static Note mapRow(ResultSet rs) throws SQLException {
         return new Note(
                 rs.getInt("id"),
