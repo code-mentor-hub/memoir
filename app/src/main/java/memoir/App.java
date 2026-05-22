@@ -41,10 +41,22 @@ public class App {
                     DatabaseManager.insertNote(note);
                     break;
                 case "4":
-//                    deleteNote();
+                    System.out.println("Please enter the note id to delete: ");
+                    int deleteId = Integer.parseInt(scanner.nextLine().trim());
+                    DatabaseManager.deleteNoteById(deleteId);
                     break;
                 case "5":
-//                    modifyNote();
+                    int modifyId;
+                    System.out.println("Please enter the note id to modify: ");
+                    modifyId = Integer.parseInt(scanner.nextLine().trim());
+                    System.out.println("Please enter new title: ");
+                    String newTitle = scanner.nextLine();
+                    System.out.println("Please enter new content: ");
+                    String newContent = scanner.nextLine();
+                    System.out.println("Please enter new author: ");
+                    String newAuthor = scanner.nextLine();
+                    Note updatedNote = new Note(newTitle, newContent, LocalDateTime.now(), newAuthor);
+                    DatabaseManager.modifyNoteById(modifyId, updatedNote);
                     break;
                 case "6":
                     System.out.println("Exiting...");
