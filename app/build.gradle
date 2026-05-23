@@ -48,3 +48,7 @@ application {
     // Define the main class for the application.
     mainClass = 'memoir.App'
 }
+
+run {
+    standardInput = System.in
+}
