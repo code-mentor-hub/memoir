@@ -9,7 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
-//    id 'maven-publish'
+    id 'checkstyle'
 }
 
 repositories {
@@ -26,18 +26,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.9'
 
 }
-//publishing {
-//    repositories {
-//        maven {
-//            name = "GitHubPackages"
-//            url = "https://maven.pkg.github.com/octocat/hello-world"
-//            credentials {
-//                username = System.getenv("GITHUB_ACTOR")
-//                password = System.getenv("GITHUB_TOKEN")
-//            }
-//        }
-//    }
-//}
+
 testing {
     suites {
         // Configure the built-in test suite
@@ -58,4 +47,8 @@ java {
 application {
     // Define the main class for the application.
     mainClass = 'memoir.App'
+}
+
+run {
+    standardInput = System.in
 }

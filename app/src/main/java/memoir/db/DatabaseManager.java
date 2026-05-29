@@ -4,7 +4,12 @@ import memoir.model.Note;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,14 +69,17 @@ public class DatabaseManager {
 
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-
             if (rs.next()) {
-                return mapRow(rs);
+                Note note = mapRow(rs);
+                System.out.println(note);
+                return note;
+            } else {
+                System.out.println("Note not found.");
             }
-
         } catch (Exception e) {
             System.err.println("Find failed: " + e.getMessage());
         }
+
         return null;
     }
 
@@ -88,12 +96,12 @@ public class DatabaseManager {
         }
     }
 
-    public static void modifyNoteById(int id, String newContent) {
+    public static void modifyNoteById(int id, Note newContent) {
         String sql = "UPDATE notes SET content = ? WHERE id = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, newContent);
+            stmt.setString(1, newContent.getContent());
             stmt.setInt(2, id);
             stmt.executeUpdate();
 
@@ -129,6 +137,15 @@ public class DatabaseManager {
         } catch (Exception e) {
             System.err.println("Get all failed: " + e.getMessage());
         }
+
+        if (notes.isEmpty()) {
+            System.out.println("No notes found.");
+        } else {
+            for (Note n : notes) {
+                System.out.println(n);
+            }
+        }
+
         return notes;
     }
 
@@ -142,3 +159,5 @@ public class DatabaseManager {
         );
     }
 }
+
+
