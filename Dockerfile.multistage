@@ -10,6 +10,7 @@ COPY settings.gradle .
 RUN ./gradlew :app:dependencies --no-daemon
 
 COPY app/src app/src
+COPY app/config app/config
 
 RUN ./gradlew build --no-daemon
 
