@@ -91,7 +91,9 @@
             <property name="ignoreFinal" value="false"/>
         </module>
         <module name="OverloadMethodsDeclarationOrder"/>
-        <module name="VariableDeclarationUsageDistance"/>
+        <module name="VariableDeclarationUsageDistance">
+            <property name="allowedDistance" value="10"/>
+        </module>
         <module name="MethodParamPad"/>
         <module name="OperatorWrap"/>
         <module name="AnnotationLocation">
