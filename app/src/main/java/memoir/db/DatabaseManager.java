@@ -5,10 +5,10 @@ import memoir.model.Note;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -96,33 +96,18 @@ public class DatabaseManager {
         }
     }
 
-    public static void modifyNoteById(int id, Note newContent) {
+    public static void modifyNoteById(int id, Note updatedNote) {
         String sql = "UPDATE notes SET content = ? WHERE id = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, newContent.getContent());
+            stmt.setString(1, updatedNote.getContent());
             stmt.setInt(2, id);
             stmt.executeUpdate();
 
         } catch (Exception e) {
             System.err.println("Modify failed: " + e.getMessage());
         }
-    }
-
-    public static boolean noteExists(int id) {
-        String sql = "SELECT 1 FROM notes WHERE id = ?";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            return rs.next();
-
-        } catch (Exception e) {
-            System.err.println("Exists check failed: " + e.getMessage());
-        }
-        return false;
     }
 
     public static List<Note> getAllNotes() {
@@ -159,5 +144,3 @@ public class DatabaseManager {
         );
     }
 }
-
-

@@ -2,6 +2,17 @@
 
 Memoir is a simple notes management application built with Java and SQLite.
 
+## Project Report Snapshot
+
+This project was delivered through a 6-month mentorship format (Jan-Jun 2026) focused on backend and DevOps readiness in a real team workflow.
+
+- MVP scope completed end-to-end (CLI app + SQLite persistence)
+- CI/CD pipeline and Docker containerization implemented
+- 43 commits delivered through feature branches and pull request review
+- Strong team outcome: 4.5/5 overall experience, 5/5 program recommendation
+
+The full refined report is split into concise wiki-ready pages in `reports/`.
+
 The project is designed as a learning exercise covering:
 
 - Java fundamentals

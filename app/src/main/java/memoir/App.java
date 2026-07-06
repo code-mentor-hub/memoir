@@ -4,21 +4,17 @@ import memoir.db.DatabaseManager;
 import memoir.model.Note;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class App {
-    static Scanner scanner = new Scanner(System.in);
-    static Map<String, String> notes = new HashMap<>();
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
-      
         DatabaseManager.initializeDatabase();
         boolean running = true;
         while (running) {
             showMenu();
-            String choice = scanner.nextLine();
+            String choice = SCANNER.nextLine();
 
             switch (choice) {
                 case "1":
@@ -26,35 +22,34 @@ public class App {
                     break;
                 case "2":
                     System.out.println("Please enter the note id to search: ");
-                    int id = Integer.parseInt(scanner.nextLine().trim());
+                    int id = Integer.parseInt(SCANNER.nextLine().trim());
                     DatabaseManager.findNoteById(id);
                     break;
                 case "3":
                     System.out.println("Please enter the note title: ");
-                    String title = scanner.nextLine();
+                    String title = SCANNER.nextLine();
                     System.out.println("Please enter the note content: ");
-                    String content = scanner.nextLine();
+                    String content = SCANNER.nextLine();
                     System.out.println("Please enter the name of author: ");
-                    String author = scanner.nextLine();
+                    String author = SCANNER.nextLine();
 
                     Note note = new Note(title, content, LocalDateTime.now(), author);
                     DatabaseManager.insertNote(note);
                     break;
                 case "4":
                     System.out.println("Please enter the note id to delete: ");
-                    int deleteId = Integer.parseInt(scanner.nextLine().trim());
+                    int deleteId = Integer.parseInt(SCANNER.nextLine().trim());
                     DatabaseManager.deleteNoteById(deleteId);
                     break;
                 case "5":
-                    int modifyId;
                     System.out.println("Please enter the note id to modify: ");
-                    modifyId = Integer.parseInt(scanner.nextLine().trim());
+                    int modifyId = Integer.parseInt(SCANNER.nextLine().trim());
                     System.out.println("Please enter new title: ");
-                    String newTitle = scanner.nextLine();
+                    String newTitle = SCANNER.nextLine();
                     System.out.println("Please enter new content: ");
-                    String newContent = scanner.nextLine();
+                    String newContent = SCANNER.nextLine();
                     System.out.println("Please enter new author: ");
-                    String newAuthor = scanner.nextLine();
+                    String newAuthor = SCANNER.nextLine();
                     Note updatedNote = new Note(newTitle, newContent, LocalDateTime.now(), newAuthor);
                     DatabaseManager.modifyNoteById(modifyId, updatedNote);
                     break;
@@ -66,10 +61,10 @@ public class App {
                     System.out.println("Invalid option.");
             }
         }
-      scanner.close(); 
-    } 
+        SCANNER.close();
+    }
 
-    static void showMenu() {
+    private static void showMenu() {
         System.out.println("1. Print all notes");
         System.out.println("2. Search note");
         System.out.println("3. Add note");
@@ -78,66 +73,4 @@ public class App {
         System.out.println("6. Exit");
         System.out.print("Choose option: ");
     }
-
-    static void printNotes() {
-        if (notes.isEmpty()) {
-            System.out.println("No notes available.");
-            return;
-        }
-
-        for (String title : notes.keySet()) {
-            System.out.println("Title: " + title);
-            System.out.println("Content: " + notes.get(title));
-        }
-    }
-
-//    static void searchNote() {
-//        System.out.print("Enter note id: ");
-//        int id = scanner.nextInt();
-//
-//        if (notes.containsKey(name)) {
-//            System.out.println("Content: " + notes.get(name));
-//        } else {
-//            System.out.println("Error: No results found");
-//        }
-//    }
-//
-//    static void addNote() {
-//        System.out.print("Enter note id: ");
-//        int id = scanner.nextInt();
-//
-//        System.out.print("Enter note content: ");
-//        String content = scanner.nextLine();
-//
-//        notes.put(name, content);
-//        System.out.println("Note saved.");
-//    }
-//
-//    static void deleteNote() {
-//        System.out.print("Enter note id to delete: ");
-//         int id = scanner.nextInt();
-//
-//        if (notes.containsKey(name)) {
-//            notes.remove(name);
-//            System.out.println("Note deleted.");
-//        } else {
-//            System.out.println("Error: Note not found");
-//        }
-//    }
-//
-//    static void modifyNote() {
-//        System.out.print("Enter note id to modify: ");
-//         int id = scanner.nextInt();
-//
-//        if (notes.containsKey(name)) {
-//            System.out.print("Enter new content: ");
-//            String newContent = scanner.nextLine();
-//
-//            notes.put(name, newContent);
-//            System.out.println("Note updated.");
-//        } else {
-//            System.out.println("Error: Note not found");
-//        }
-//
-//    }
 }
