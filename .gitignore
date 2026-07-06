@@ -1,12 +1,13 @@
 # IDE
 .idea/
 *.iml
+.vscode/
 .project
 .classpath
 .settings/
-app/.project
-app/.classpath
-app/.settings/
+**/.project
+**/.classpath
+**/.settings/
 
 # OS
 .DS_Store
